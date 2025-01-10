@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 09:43:03 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/03 15:13:54 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:16:24 by cmatos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	A_is_sorted(stack_list *stack);
-int	stack_len(stack_list *stack);
+int	A_is_sorted(t_stack *stack);
+int	stack_len(t_stack *stack);
 
 /*int	main(int ac, char **av)
 {
-	stack_list	*stack;
+	t_stack	*stack;
 
 	stack = av[1];
 	
@@ -29,7 +29,7 @@ int	stack_len(stack_list *stack);
 		sort_small_stack(stack);
 }*/
 
-int	A_is_sorted(stack_list *stack)
+int	A_is_sorted(t_stack *stack)
 {
 	while (stack)
 	{
@@ -39,7 +39,7 @@ int	A_is_sorted(stack_list *stack)
 	}
 	return (0);
 }
-int	stack_len(stack_list *stack)
+int	stack_len(t_stack *stack)
 {
 	int	i;
 

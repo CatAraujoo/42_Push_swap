@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:19:32 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/03 14:59:38 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:17:04 by cmatos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(stack_list **top)
+void	swap(t_stack **top)
 {
-	stack_list	*first;
-	stack_list	*second;
+	t_stack	*first;
+	t_stack	*second;
 
 	while (*top != NULL && (*top)->next != NULL)
 	{
@@ -27,17 +27,17 @@ void	swap(stack_list **top)
 	}
 }
 
-void	sa(stack_list **stack_a)
+void	sa(t_stack **stack_a)
 {
 	swap(stack_a);
 	ft_printf("sa\n");
 }
-void	sb(stack_list **stack_b)
+void	sb(t_stack **stack_b)
 {
 	swap(stack_b);
 	ft_printf("sb\n");
 }
-void	ss(stack_list **stack_a, stack_list **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);

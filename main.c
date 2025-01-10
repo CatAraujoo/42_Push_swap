@@ -3,16 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:00:56 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/03 15:06:23 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:52:53 by cmatos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(stack_list *stack, char *name)
+int	main(int ac, char **av)
+{
+	int i = 0;
+	int j;
+	char *stack_a;
+	
+	if (ac < 2)
+		return (0);
+	if (ac == 2)
+	{
+		stack_a = ft_split(av[1], ' ');
+	}
+	
+}
+
+/*
+void	print_stack(t_stack *stack, char *name)
 {
 	ft_printf("Stack %s:\n", name);
 	while (stack)
@@ -24,8 +40,8 @@ void	print_stack(stack_list *stack, char *name)
 }
 int	main(int ac, char **av)
 {
-	stack_list	*a;
-	stack_list	*b;
+	t_stack	*a;
+	t_stack	*b;
 	int	top_value;
 	
 	a = NULL;
@@ -89,4 +105,4 @@ int	main(int ac, char **av)
 	print_stack(a, "A");
 	print_stack(b, "B");
 	return (0);
-}
+}*/

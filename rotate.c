@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 14:16:02 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/03 14:30:38 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:16:54 by cmatos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(stack_list **stack)
+void	rotate(t_stack **stack)
 {
-	stack_list	*temp;
-	stack_list	*first;
+	t_stack	*temp;
+	t_stack	*first;
 	
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
@@ -27,17 +27,17 @@ void	rotate(stack_list **stack)
 	first->next = NULL;
 	temp->next = first;
 }
-void	ra(stack_list **stack_a)
+void	ra(t_stack **stack_a)
 {
 	rotate(stack_a);
 	ft_printf("ra\n");
 }
-void	rb(stack_list **stack_b)
+void	rb(t_stack **stack_b)
 {
 	rotate(stack_b);
 	ft_printf("rb\n");
 }
-void	rr(stack_list **stack_a, stack_list **stack_b)
+void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);

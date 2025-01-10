@@ -1,40 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   error_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 12:03:36 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/10 14:16:37 by cmatos-a         ###   ########.fr       */
+/*   Created: 2025/01/10 14:30:07 by cmatos-a          #+#    #+#             */
+/*   Updated: 2025/01/10 14:55:28 by cmatos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_stack **stack_a, t_stack **stack_b)
+int error_check(char *stack)
 {
-	t_stack	*temp;
+	int i = 0;
+	int j;
 	
-	if (*stack_b != NULL)
+	while (stack[i])
 	{
-		temp = *stack_a;
-		*stack_b = (*stack_b)->next;
-		temp->next = *stack_a;
-		*stack_a = temp;
+		if (stack[i] <= '0' && stack[i] >= '9')
+		{
+			return (write (1, "Error\n", 6));
+			//	return ;
+		}
+		if (*stack < INT_MIN || *stack > INT_MAX)
+		{
+			write (1, "Error\n", 6);
+			//	return ;
+		}
 	}
-	ft_printf("pa\n");
-}
-void	pb(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*temp;
-	
-	if (*stack_a != NULL)
+	while (stack[i])
 	{
-		temp = *stack_a;
-		*stack_a = (*stack_a)->next;
-		temp->next = *stack_b;
-		*stack_b = temp;
+			j = i + 1;
+		while (stack[j])
+		{
+			if (stack[j] == stack[i])
+			{
+				write (1, "Error\n", 6);
+				//	return ;
+			}
+			j++;
+		}
+		i++;
 	}
-	ft_printf("pb\n");
 }

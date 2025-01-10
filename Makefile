@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: catarina <catarina@student.42.fr>          +#+  +:+       +#+         #
+#    By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 09:45:18 by catarina          #+#    #+#              #
-#    Updated: 2025/01/03 15:25:32 by catarina         ###   ########.fr        #
+#    Updated: 2025/01/09 10:29:27 by cmatos-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS =	$(SRCS_DIR)/push_swap.c \
 		$(SRCS_DIR)/rotate.c \
 		$(SRCS_DIR)/reverse_rotate.c \
 		$(SRCS_DIR)/sort_stack.c \
-		$(SRCS_DIR)/swap.c \
+		$(SRCS_DIR)/swap.c \ 
 		$(SRCS_DIR)/push.c \
 		$(SRCS_DIR)/main.c
 
