@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+         #
+#    By: catarina <catarina@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 10:20:32 by cmatos-a          #+#    #+#              #
-#    Updated: 2024/10/29 15:23:06 by cmatos-a         ###   ########.fr        #
+#    Updated: 2025/01/16 14:30:26 by catarina         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS_DIR = src
 GNL_DIR = gnl
 PRINTF_DIR = ft_printf
-INCLUDES_DIR = includes
+INCLUDES_DIR = .
 
 SRCS = $(SRCS_DIR)/ft_isalpha.c \
        $(SRCS_DIR)/ft_isdigit.c \
@@ -49,7 +49,7 @@ SRCS = $(SRCS_DIR)/ft_isalpha.c \
        $(SRCS_DIR)/ft_putstr_fd.c \
        $(SRCS_DIR)/ft_putchar_fd.c \
        $(SRCS_DIR)/ft_putnbr_fd.c \
-       $(SRCS_DIR)/*ft_strtrim.c \
+       $(SRCS_DIR)/ft_strtrim.c \
        $(SRCS_DIR)/ft_putendl_fd.c \
        $(SRCS_DIR)/ft_striteri.c \
        $(SRCS_DIR)/ft_strmapi.c \
@@ -65,7 +65,9 @@ PRINTF_SRCS = $(PRINTF_DIR)/ft_printchar.c \
 		$(PRINTF_DIR)/ft_printstr.c \
 		$(PRINTF_DIR)/ft_printunsignd.c
 
-BONUS_SRC = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelonde.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+BONUS_SRC = $(SRCS_DIR)/ft_lstnew.c $(SRCS_DIR)/ft_lstadd_front.c $(SRCS_DIR)/ft_lstsize.c \
+            $(SRCS_DIR)/ft_lstlast.c $(SRCS_DIR)/ft_lstadd_back.c $(SRCS_DIR)/ft_lstdelonde.c \
+            $(SRCS_DIR)/ft_lstclear.c $(SRCS_DIR)/ft_lstiter.c $(SRCS_DIR)/ft_lstmap.c
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRC:.c=.o)
@@ -78,16 +80,16 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 	
 BONUS: $(NAME) $(BONUS_OBJS)
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+	ar rcs $(NAME) $(BONUS_OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I $(INCLUDES_DIR) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS) $(GNL_OBJS) $(PRINTF_OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean
+re: fclean all
 	make && make bonus
