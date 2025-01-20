@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 14:16:02 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/10 14:16:54 by cmatos-a         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:50:34 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ void	rotate(t_stack **stack)
 void	ra(t_stack **stack_a)
 {
 	rotate(stack_a);
-	ft_printf("ra\n");
+	write (1, "ra\n", 3);
 }
 void	rb(t_stack **stack_b)
 {
 	rotate(stack_b);
-	ft_printf("rb\n");
+	write (1, "rb\n", 3);
 }
 void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);
-	ft_printf("rr\n");
+	write (1, "rr\n", 3);
 }
