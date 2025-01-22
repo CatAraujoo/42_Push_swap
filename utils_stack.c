@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:00:16 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/17 11:09:36 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:17:25 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ int	stack_len(t_stack *stack_a)
 	}
 	return (i);	
 }
-int	A_is_sorted (t_stack *stack_a)
+bool	A_is_sorted (t_stack *stack_a)
 {
 	if (!stack_a)
 		return (1);
-	while (stack_a)
+	while (stack_a->next)
 	{
 		if (stack_a->value > stack_a->next->value)
-			return (0);
+			return (false);
 		stack_a = stack_a->next;
 	}
-	return (1);
+	return (true);
 }
 
 t_stack	*ft_find_last(t_stack *stack_a)

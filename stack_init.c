@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:28:28 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/20 11:18:50 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:05:39 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	append_node(t_stack **stack_a, int nbr)
 		new_node->prev = last_node;
 	}
 }
-void	stack_init_a(t_stack **stack_a, char **input)
+void	stack_init(t_stack **stack_a, char **input)
 {
 	int		i;
 	long	nbr;
@@ -68,7 +68,7 @@ void	stack_init_a(t_stack **stack_a, char **input)
 	i = 0;
 	while (input[i])
 	{
-		if (check_digit(input[i]) != 0)
+		if (check_digit(input[i]) != 1)
 			ft_free_error(*stack_a);
 		nbr = ft_atol(input[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
@@ -79,27 +79,27 @@ void	stack_init_a(t_stack **stack_a, char **input)
 		i++;
 	}
 }
-void	prep_for_push(t_stack **stack, t_stack *target, char stack_name)//PROBLEEEEEEMMMMMM write (1, "ola", 3);
+void	prep_for_push(t_stack **stack, t_stack *target, char stack_name)
 {
 	while (*stack != target)
-	{		
+	{
 		if (stack_name == 'a')
 		{
 			if (target->above_median)
-				ra(stack);
+				ra(stack, false);
 			else
-				rra(stack);
+				rra(stack, false);
 		}
 		else if (stack_name == 'b')
 		{
 			if (target->above_median)
-				rb(stack);
+				rb(stack, false);
 			else
-				rrb(stack);
+				rrb(stack, false);
 		}	
 	}
 }
-
+//6 13 4 14 19 3 18 8 11 15 17 2 1 7 12 9 10 16 5 wrong!!!
 /*int	main(int ac, char **av)
 {
 	t_stack *new_stack;

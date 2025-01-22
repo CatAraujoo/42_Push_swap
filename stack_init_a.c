@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:46:32 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/20 10:28:05 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:42:46 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ static void	set_target_a(t_stack *stack_a, t_stack *stack_b)
 		current_b = stack_b;
 		while (current_b)
 		{
-			if (current_b->value < stack_a->value 
-				&& current_b->cheapest > best_match_index)
+			if (current_b->value < stack_a->value && current_b->value > best_match_index)
 			{
 				best_match_index = current_b->value;
 				target_node = current_b;
@@ -80,24 +79,18 @@ static void	cost_analysis_a(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void	ft_set_cheapest(t_stack *stack)
+t_stack	*ft_set_cheapest(t_stack *stack)
 {
-	long	cheapest_value;
-	t_stack	*cheapest_node;
+	t_stack	*cheapest;
 
-	if (!stack)
-		return ;
-	cheapest_value = LONG_MAX;
-	while (stack)
+	cheapest = stack;
+	while (stack != NULL)
 	{
-		if (stack->push_price < cheapest_value)
-		{
-			cheapest_value = stack->push_price;
-			cheapest_node = stack;
-		}
-		stack = stack->next;
-	}
-	cheapest_node->cheapest = true;
+        if (stack->value < cheapest->value)
+            cheapest = stack;
+        stack = stack->next;
+    }
+	return (cheapest);
 }
 t_stack	*ft_find_cheapest(t_stack *stack)
 {

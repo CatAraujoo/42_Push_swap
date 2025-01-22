@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:30:07 by cmatos-a          #+#    #+#             */
-/*   Updated: 2025/01/17 16:01:15 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:05:35 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,22 @@ int	check_doubles (t_stack *stack_a, int nbr)
 }
 int	check_digit (char *stack_a)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	if (stack_a[i] != '-' && stack_a[i] != '+' && (stack_a[i] <= '0' && stack_a[i] >= '9'))
-			return (1);
+	if (!(stack_a[i] == '+' || stack_a[i] == '-' || (stack_a[i] >= '0' && stack_a[i] <= '9')))
+		return (0);
 	if (stack_a[i] == '-' || stack_a[i] == '+')
 		i++;
 	while (stack_a[i])
 	{
 		if (!(stack_a[i] >= '0' && stack_a[i] <= '9'))
-			return (1);
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
 }
-void	ft_free_stack(t_stack **stack)
+void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
 	t_stack	*node;
@@ -63,13 +63,13 @@ void	ft_free_error(t_stack *stack_a)
 {
 	if (!stack_a)
 		return ;
-	ft_free_stack(&stack_a);
+	free_stack(&stack_a);
 	write (1, "Error\n", 6);
 	exit(1);
 }
 void	ft_free_split(char **array)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (!array)

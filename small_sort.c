@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:23:55 by cmatos-a          #+#    #+#             */
-/*   Updated: 2025/01/20 11:24:35 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/21 11:36:57 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	sort_three(t_stack **stack_a)
     if (a > b && b > c)
     {
         sa(stack_a);
-        rra(stack_a);
+        rra(stack_a, false);
     }
     /*else if (a > b && b > c && a > c)
         ra(stack_a);*/
@@ -52,15 +52,15 @@ void	sort_three(t_stack **stack_a)
         sa(stack_a);
 	else if (a > b && b < c && a > c)
 	{
-		ra(stack_a);
+		ra(stack_a, false);
 	}
 	else if (a < b && b > c && a < c)
     {
         sa(stack_a);
-        ra(stack_a);
+        ra(stack_a, false);
     }
     else if (a < b && b > c && a > c)
-        rra(stack_a);
+        rra(stack_a, false);
 }
 /*void	sort_five(t_stack **stack_a)
 {

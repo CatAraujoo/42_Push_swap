@@ -6,7 +6,7 @@
 #    By: catarina <catarina@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 09:45:18 by catarina          #+#    #+#              #
-#    Updated: 2025/01/16 14:53:19 by catarina         ###   ########.fr        #
+#    Updated: 2025/01/21 14:22:50 by catarina         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRCS =	$(SRCS_DIR)/push_swap.c \
 		$(SRCS_DIR)/stack_init.c \
 		$(SRCS_DIR)/stack_init_a.c \
 		$(SRCS_DIR)/stack_init_b.c \
-		$(SRCS_DIR)/utils_stack.c
+		$(SRCS_DIR)/utils_stack.c \
+		$(SRCS_DIR)/split_ft.c
 
 LIBFT_DIR	= ./Libft
 LIBFT		= $(LIBFT_DIR)/libft.a
