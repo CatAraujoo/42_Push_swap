@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 14:16:02 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/22 10:03:50 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/23 10:54:36 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,21 @@ static void	rotate(t_stack **stack)
 	last_node->next->next = NULL;
 }		
 
-void	ra(t_stack **stack_a, bool print) 
+void	ra(t_stack **stack_a) 
 {
 	rotate(stack_a);
-	if (!print)
-		write (1, "ra\n", 3);
+	write (1, "ra\n", 3);
 }
 
-void	rb(t_stack **stack_b, bool print)
+void	rb(t_stack **stack_b)
 {
 	rotate(stack_b);
-	if (!print)
-		write (1, "rb\n", 3);
+	write (1, "rb\n", 3);
 }
 
-void	rr(t_stack **stack_a, t_stack **stack_b, bool print)
+void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);
-	if (!print)
-		write (1, "rr\n", 3);
+	write (1, "rr\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:46:32 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/22 11:42:46 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:01:24 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,28 @@ static void	cost_analysis_a(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-t_stack	*ft_set_cheapest(t_stack *stack)
+void	ft_set_cheapest(t_stack *stack)
 {
-	t_stack	*cheapest;
+	t_stack *cheapest;
+    int min_price = INT_MAX;
 
-	cheapest = stack;
-	while (stack != NULL)
-	{
-        if (stack->value < cheapest->value)
+    if (!stack)
+        return;
+
+    cheapest = NULL;
+    while (stack != NULL)
+    {
+        stack->cheapest = false;  // Reset cheapest flag
+        if (stack->push_price < min_price)
+        {
+            min_price = stack->push_price;
             cheapest = stack;
+        }
         stack = stack->next;
     }
-	return (cheapest);
+
+    if (cheapest)
+        cheapest->cheapest = true;
 }
 t_stack	*ft_find_cheapest(t_stack *stack)
 {

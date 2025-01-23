@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:44:05 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/22 12:02:48 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:04:29 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ int	main(int ac, char **av)
 	}
 	else
 		stack_init(&stack_a, av + 1);
+	debug_print_stacks(stack_a, stack_b, "initial");
 	if (A_is_sorted(stack_a) == false)
 		ft_sorting(&stack_a, &stack_b);
-	print_stack (stack_a);
+	debug_print_stacks(stack_a, stack_b, "final");
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 	return (0);

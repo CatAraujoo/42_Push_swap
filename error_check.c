@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:30:07 by cmatos-a          #+#    #+#             */
-/*   Updated: 2025/01/22 12:05:35 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:27:04 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,13 @@ int	check_digit (char *stack_a)
 }
 void	free_stack(t_stack **stack)
 {
-	t_stack	*temp;
-	t_stack	*node;
+	t_stack	*tmp;
 
-	if (!stack)
-		return ;
-	node = *stack;
-	while (node)
+	while (*stack)
 	{
-		temp = node->next;
-		node->value = 0;
-		free(node);
-		node = temp;
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
 	}
 	*stack = NULL;
 }

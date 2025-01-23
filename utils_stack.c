@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:00:16 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/22 11:17:25 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:33:11 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_stack	*ft_find_lowest(t_stack *stack_a)
 	}
 	return (lowest_node);
 }
-int	ft_find_median(t_stack *stack_a)
+/*int	ft_find_median(t_stack *stack_a)
 {
 	int	len;
 	int	res;
@@ -90,4 +90,36 @@ int	ft_find_median(t_stack *stack_a)
 		return (res);
 	else
 		return (res + 1);
+}*/
+int ft_find_median(t_stack *stack_a)
+{
+    int len;
+    int *arr;
+    int median;
+    int i;
+    t_stack *temp;
+
+    len = stack_len(stack_a);
+    arr = malloc(sizeof(int) * len);
+    if (!arr)
+        return 0;  // Error handling
+    i = 0;
+    temp = stack_a;
+    while (temp)
+    {
+        arr[i++] = temp->value;
+        temp = temp->next;
+    }
+    for (i = 0; i < len - 1; i++)
+        for (int j = 0; j < len - i - 1; j++)
+            if (arr[j] > arr[j + 1])
+            {
+                int t = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = t;
+            }
+
+    median = arr[len / 2];
+    free(arr);
+    return median;
 }

@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:28:28 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/22 11:05:39 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/23 14:03:12 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,16 @@ void	prep_for_push(t_stack **stack, t_stack *target, char stack_name)
 		if (stack_name == 'a')
 		{
 			if (target->above_median)
-				ra(stack, false);
+				ra(stack);
 			else
-				rra(stack, false);
+				rra(stack);
 		}
 		else if (stack_name == 'b')
 		{
 			if (target->above_median)
-				rb(stack, false);
+				rb(stack);
 			else
-				rrb(stack, false);
+				rrb(stack);
 		}	
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:23:55 by cmatos-a          #+#    #+#             */
-/*   Updated: 2025/01/21 11:36:57 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:53:31 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	ft_sorting(t_stack **stack_a, t_stack **stack_b)
 {
+	rra(stack_a);
 	if (stack_len(*stack_a) == 2)
 		sort_two(*stack_a);
 	else if (stack_len(*stack_a) == 3)
 		sort_three(stack_a);
+	/*else if (stack_len(*stack_a) == 5)
+		sort_five(stack_a, stack_b);*/
 	else
 		big_sort(stack_a, stack_b);
 }
@@ -43,38 +46,55 @@ void	sort_three(t_stack **stack_a)
 
     if (a > b && b > c)
     {
-        sa(stack_a);
-        rra(stack_a, false);
+        ra(stack_a);
+		sa(stack_a);
     }
-    /*else if (a > b && b > c && a > c)
-        ra(stack_a);*/
     else if (a > b && b < c && a < c)
         sa(stack_a);
 	else if (a > b && b < c && a > c)
 	{
-		ra(stack_a, false);
+		ra(stack_a);
 	}
 	else if (a < b && b > c && a < c)
     {
         sa(stack_a);
-        ra(stack_a, false);
+        ra(stack_a);
     }
     else if (a < b && b > c && a > c)
-        rra(stack_a, false);
+        rra(stack_a);
 }
-/*void	sort_five(t_stack **stack_a)
+/*void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*biggest_node;
+	int	len;
+
+	len = stack_len(*stack_a);
+	min_on_top(stack_a);
+	pb(stack_a, stack_b);
+	if (len == 5)
+	{
+		min_on_top(stack_a);
+		pb(stack_a, stack_b);
+	}
+	sort_three(stack_a);
+	pa(stack_a, stack_b);
+	if (len == 4)
+		pa(stack_a, stack_b);
+}*/
+/*t_stack	*biggest_node;
+	t_stack *smallest_node;
 	
 	biggest_node = ft_find_highest(*stack_a);
-	while (stack_a)
+	smallest_node = ft_find_lowest(*stack_a);
+	while (!A_is_sorted(*stack_a))
 	{
 		if (biggest_node == *stack_a)
-			ra(stack_a);
+			ra(stack_a, false);
 		else if ((*stack_a)->next == biggest_node)
-			rra(stack_a);
+		{
+			sa(stack_a);
+			rra(stack_a, false);
+		}
 		if ((*stack_a)->value > (*stack_a)->next->value)
 			sa(stack_a);
-		
 	} 
 }*/
