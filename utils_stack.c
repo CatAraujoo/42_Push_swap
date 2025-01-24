@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:00:16 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/23 14:33:11 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:19:21 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,19 @@ t_stack	*ft_find_lowest(t_stack *stack_a)
 	}
 	return (lowest_node);
 }
-/*int	ft_find_median(t_stack *stack_a)
+int	ft_find_median(t_stack *stack_a)
 {
 	int	len;
 	int	res;
 	
 	len = stack_len(stack_a);
 	res = len / 2;
-	if (res % 1 == 0)
+	if (res % 2 == 0)
 		return (res);
 	else
 		return (res + 1);
-}*/
-int ft_find_median(t_stack *stack_a)
+}
+/*int ft_find_median(t_stack *stack_a)
 {
     int len;
     int *arr;
@@ -122,4 +122,4 @@ int ft_find_median(t_stack *stack_a)
     median = arr[len / 2];
     free(arr);
     return median;
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:46:32 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/23 16:01:24 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/24 10:36:55 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	current_index(t_stack *stack)
 	if (!stack)
 		return ;
 	i = 0;
-	median = stack_len(stack) / 2;
+	median = ft_find_median(stack);
 	while (stack)
 	{
 		stack->index = i;
@@ -81,26 +81,25 @@ static void	cost_analysis_a(t_stack *stack_a, t_stack *stack_b)
 
 void	ft_set_cheapest(t_stack *stack)
 {
-	t_stack *cheapest;
+	t_stack *cheapest_node;
     int min_price = INT_MAX;
 
     if (!stack)
         return;
 
-    cheapest = NULL;
+    cheapest_node = NULL;
     while (stack != NULL)
     {
-        stack->cheapest = false;  // Reset cheapest flag
+        stack->cheapest = false;  // Reset cheapest
         if (stack->push_price < min_price)
         {
             min_price = stack->push_price;
-            cheapest = stack;
+            cheapest_node = stack;
         }
         stack = stack->next;
     }
-
-    if (cheapest)
-        cheapest->cheapest = true;
+    if (cheapest_node)
+        cheapest_node->cheapest = true;
 }
 t_stack	*ft_find_cheapest(t_stack *stack)
 {
