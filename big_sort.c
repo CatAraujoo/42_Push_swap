@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:29:52 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/24 10:35:35 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/24 13:41:09 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ static void	move_b_to_a(t_stack **stack_a, t_stack **stack_b)
 	prep_for_push(stack_a, (*stack_b)->target_node, 'a');
 	pa(stack_a, stack_b); 
 }
-void	print_stack (t_stack **stack, char stack_name)
+/*void	print_stack (t_stack **stack, char stack_name)
 {
 	while (*stack != NULL)
 	{
 		printf("stack: %c: %d\n", stack_name, (*stack)->value);
 		*stack = (*stack)->next;
 	}
-}
+}*/
 void	min_on_top(t_stack **stack_a)
 {
-	while ((*stack_a)->value != ft_find_lowest(*stack_a)->value)
+	while ((*stack_a) != ft_find_lowest(*stack_a))
 	{
 		if ((*stack_a)->above_median)
 			ra(stack_a);
@@ -102,9 +102,7 @@ void	big_sort(t_stack **stack_a, t_stack **stack_b)
 		init_a(*stack_a, *stack_b);
 		move_a_to_b(stack_a, stack_b);
 	}
-	
 	sort_three(stack_a);
-	
 	while (*stack_b)
 	{
 		init_b(*stack_a, *stack_b);
