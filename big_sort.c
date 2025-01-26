@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:29:52 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/24 13:41:09 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:08:24 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,14 @@ static void	move_a_to_b(t_stack **stack_a, t_stack **stack_b)
 	ft_set_cheapest(*stack_a); 
 	cheapest = ft_find_cheapest(*stack_a);
 	if (cheapest->above_median && cheapest->target_node->above_median)
+		
 		rotate_both(stack_a, stack_b, cheapest);
 	else if (!(cheapest->above_median) && !(cheapest->target_node->above_median))
 		rev_rotate_both(stack_a, stack_b, cheapest);
+	else if ((!(cheapest->above_median) && cheapest->target_node->above_median) || (cheapest->above_median && !(cheapest->target_node->above_median)))
+	{
+		cheapest = (*stack_a)->push_price + (*stack_a)->target_node->push_price;
+	}
 	prep_for_push(stack_a, cheapest, 'a');
 	prep_for_push(stack_b, cheapest->target_node, 'b');
 	pb(stack_b, stack_a);
@@ -100,6 +105,7 @@ void	big_sort(t_stack **stack_a, t_stack **stack_b)
 	while (len_a-- > 3 && !A_is_sorted(*stack_a))
 	{
 		init_a(*stack_a, *stack_b);
+		init_b(*stack_a, *stack_b);
 		move_a_to_b(stack_a, stack_b);
 	}
 	sort_three(stack_a);

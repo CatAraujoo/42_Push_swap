@@ -6,7 +6,7 @@
 /*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:23:55 by cmatos-a          #+#    #+#             */
-/*   Updated: 2025/01/23 15:53:31 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/24 14:50:59 by catarina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_sorting(t_stack **stack_a, t_stack **stack_b)
 {
-	rra(stack_a);
 	if (stack_len(*stack_a) == 2)
 		sort_two(*stack_a);
 	else if (stack_len(*stack_a) == 3)
