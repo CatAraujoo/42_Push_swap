@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: catarina <catarina@student.42.fr>          +#+  +:+       +#+         #
+#    By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 09:45:18 by catarina          #+#    #+#              #
-#    Updated: 2025/01/24 11:23:41 by catarina         ###   ########.fr        #
+#    Updated: 2025/02/03 10:26:18 by cmatos-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRCS =	$(SRCS_DIR)/push_swap.c \
 		$(SRCS_DIR)/stack_init_b.c \
 		$(SRCS_DIR)/utils_stack.c 
 
-LIBFT_DIR	= ./Libft
+LIBFT_DIR	= ./libft
 LIBFT		= $(LIBFT_DIR)/libft.a
 
 OBJS = $(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)

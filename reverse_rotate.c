@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 14:31:23 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/23 15:48:58 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:05:54 by cmatos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,16 @@
 
 static void	rev_rotate(t_stack **stack)
 {
-	 t_stack *last;
-    t_stack *second_last;
+	t_stack	*last;
 
-    if (!*stack || !(*stack)->next)
-        return;
-    
-    last = ft_find_last(*stack);
-    second_last = last->prev;
-
-    // Remove last from the end
-    second_last->next = NULL;
-
-    // Make last the new head
-    last->next = *stack;
-    last->prev = NULL;
-    (*stack)->prev = last;
-    *stack = last;
+	if (!*stack || !(*stack)->next)
+		return ;
+	last = ft_find_last(*stack);
+	last->prev->next = NULL;
+	last->next = *stack;
+	last->prev = NULL;
+	*stack = last;
+	last->next->prev = last;
 }
 
 void	rra(t_stack **stack_a)

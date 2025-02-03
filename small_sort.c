@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   small_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:23:55 by cmatos-a          #+#    #+#             */
-/*   Updated: 2025/01/24 14:50:59 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:31:11 by cmatos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+bool	a_is_sorted(t_stack *stack_a)
+{
+	if (!stack_a)
+		return (1);
+	while (stack_a->next)
+	{
+		if (stack_a->value > stack_a->next->value)
+			return (false);
+		stack_a = stack_a->next;
+	}
+	return (true);
+}
 
 void	ft_sorting(t_stack **stack_a, t_stack **stack_b)
 {
@@ -18,15 +31,16 @@ void	ft_sorting(t_stack **stack_a, t_stack **stack_b)
 		sort_two(*stack_a);
 	else if (stack_len(*stack_a) == 3)
 		sort_three(stack_a);
-	/*else if (stack_len(*stack_a) == 5)
-		sort_five(stack_a, stack_b);*/
+	else if (stack_len(*stack_a) == 5)
+		sort_five(stack_a, stack_b);
 	else
 		big_sort(stack_a, stack_b);
 }
+
 void	sort_two(t_stack *stack_a)
 {
 	int	temp;
-	
+
 	if (stack_a->value > stack_a->next->value)
 	{
 		temp = stack_a->value;
@@ -35,34 +49,37 @@ void	sort_two(t_stack *stack_a)
 		write (1, "sa\n", 3);
 	}
 }
+
 void	sort_three(t_stack **stack_a)
 {
-	int a, b, c;
+	int	a;
+	int	b;
+	int	c;
 
-    a = (*stack_a)->value;
-    b = (*stack_a)->next->value;
-    c = (*stack_a)->next->next->value;
-
-    if (a > b && b > c)
-    {
-        ra(stack_a);
+	a = (*stack_a)->value;
+	b = (*stack_a)->next->value;
+	c = (*stack_a)->next->next->value;
+	if (a > b && b > c)
+	{
+		ra(stack_a);
 		sa(stack_a);
-    }
-    else if (a > b && b < c && a < c)
-        sa(stack_a);
+	}
+	else if (a > b && b < c && a < c)
+		sa(stack_a);
 	else if (a > b && b < c && a > c)
 	{
 		ra(stack_a);
 	}
 	else if (a < b && b > c && a < c)
-    {
-        sa(stack_a);
-        ra(stack_a);
-    }
-    else if (a < b && b > c && a > c)
-        rra(stack_a);
+	{
+		sa(stack_a);
+		ra(stack_a);
+	}
+	else if (a < b && b > c && a > c)
+		rra(stack_a);
 }
-/*void	sort_five(t_stack **stack_a, t_stack **stack_b)
+
+void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
 	int	len;
 
@@ -78,7 +95,7 @@ void	sort_three(t_stack **stack_a)
 	pa(stack_a, stack_b);
 	if (len == 4)
 		pa(stack_a, stack_b);
-}*/
+}
 /*t_stack	*biggest_node;
 	t_stack *smallest_node;
 	

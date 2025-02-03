@@ -36,10 +36,9 @@ static void	push(t_stack **dst, t_stack **src)
 	}
 }
 
-
 void	pa(t_stack **stack_a, t_stack **stack_b)
 {
-	push(stack_a, stack_b); 
+	push(stack_a, stack_b);
 	write (1, "pa\n", 3);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:28:28 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/23 14:03:12 by catarina         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:23:58 by cmatos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ long	ft_atol(const char *str)//tested
 	}
 	return (res * sign);
 }
+
 void	append_node(t_stack **stack_a, int nbr)
 {
 	t_stack	*new_node;
@@ -47,7 +48,10 @@ void	append_node(t_stack **stack_a, int nbr)
 		return ;
 	new_node->next = NULL;
 	new_node->value = nbr;
-	new_node->cheapest = 0;
+	new_node->cheapest = false;
+	new_node->above_median = false;
+	new_node->index = 0;
+	new_node->push_price = 0;
 	if (!(*stack_a))
 	{
 		*stack_a = new_node;
@@ -60,7 +64,8 @@ void	append_node(t_stack **stack_a, int nbr)
 		new_node->prev = last_node;
 	}
 }
-void	stack_init(t_stack **stack_a, char **input)
+
+void	stack_init(t_stack **stack_a, char **input, int ac, char **args)
 {
 	int		i;
 	long	nbr;
@@ -69,16 +74,17 @@ void	stack_init(t_stack **stack_a, char **input)
 	while (input[i])
 	{
 		if (check_digit(input[i]) != 1)
-			ft_free_error(*stack_a);
+			ft_free_error(*stack_a, ac, args);
 		nbr = ft_atol(input[i]);
-		if (nbr > INT_MAX || nbr < INT_MIN)
-			ft_free_error(*stack_a);
-		if (check_doubles(*stack_a, (int)nbr) == 1)
-			ft_free_error(*stack_a);
+		if ((nbr > INT_MAX || nbr < INT_MIN))
+			ft_free_error(*stack_a, ac, args);
 		append_node(stack_a, (int)nbr);
 		i++;
 	}
+	if (check_doubles(*stack_a) == 1)
+		ft_free_error(*stack_a, ac, args);
 }
+
 void	prep_for_push(t_stack **stack, t_stack *target, char stack_name)
 {
 	while (*stack != target)
@@ -96,7 +102,18 @@ void	prep_for_push(t_stack **stack, t_stack *target, char stack_name)
 				rb(stack);
 			else
 				rrb(stack);
-		}	
+		}
+	}
+}
+
+void	min_on_top(t_stack **stack_a)
+{
+	while ((*stack_a)->value != ft_find_lowest(*stack_a)->value)
+	{
+		if (ft_find_lowest(*stack_a)->above_median)
+			ra(stack_a);
+		else
+			rra(stack_a);
 	}
 }
 //6 13 4 14 19 3 18 8 11 15 17 2 1 7 12 9 10 16 5 wrong!!!

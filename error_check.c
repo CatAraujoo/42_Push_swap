@@ -3,33 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   error_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:30:07 by cmatos-a          #+#    #+#             */
-/*   Updated: 2025/01/23 11:27:04 by catarina         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:24:11 by cmatos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_doubles (t_stack *stack_a, int nbr)
+int	check_doubles(t_stack *stack_a)
 {
+	int	temp;
+
 	if (!stack_a)
 		return (0);
+	temp = stack_a->value;
 	while (stack_a->next)
 	{
-		if (stack_a->value == nbr)
+		if (temp == stack_a->next->value)
 			return (1);
 		stack_a = stack_a->next;
 	}
 	return (0);
 }
-int	check_digit (char *stack_a)
+
+int	check_digit(char *stack_a)
 {
 	size_t	i;
 
 	i = 0;
-	if (!(stack_a[i] == '+' || stack_a[i] == '-' || (stack_a[i] >= '0' && stack_a[i] <= '9')))
+	if (!(stack_a[i] == '+' || stack_a[i] == '-'
+			|| (stack_a[i] >= '0' && stack_a[i] <= '9')))
 		return (0);
 	if (stack_a[i] == '-' || stack_a[i] == '+')
 		i++;
@@ -41,6 +46,7 @@ int	check_digit (char *stack_a)
 	}
 	return (1);
 }
+
 void	free_stack(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -54,14 +60,16 @@ void	free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-void	ft_free_error(t_stack *stack_a)
+void	ft_free_error(t_stack *stack_a, int ac, char **args)
 {
-	if (!stack_a)
-		return ;
-	free_stack(&stack_a);
+	if (stack_a)
+		free_stack(&stack_a);
+	if (ac == 2)
+		ft_free_split(args);
 	write (1, "Error\n", 6);
-	exit(1);
+	exit (1);
 }
+
 void	ft_free_split(char **array)
 {
 	size_t	i;

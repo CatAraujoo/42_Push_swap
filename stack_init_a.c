@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init_a.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: catarina <catarina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmatos-a <cmatos-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:46:32 by catarina          #+#    #+#             */
-/*   Updated: 2025/01/24 13:46:45 by catarina         ###   ########.fr       */
+/*   Updated: 2025/01/27 12:20:33 by cmatos-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	current_index(t_stack *stack)
 		++i;
 	}
 }
+
 static void	set_target_a(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack	*current_b;
@@ -44,7 +45,8 @@ static void	set_target_a(t_stack *stack_a, t_stack *stack_b)
 		current_b = stack_b;
 		while (current_b)
 		{
-			if (current_b->value > stack_a->value && current_b->value > best_match_index) //change
+			if (current_b->value < stack_a->value
+				&& current_b->value > best_match_index)
 			{
 				best_match_index = current_b->value;
 				target_node = current_b;
@@ -52,7 +54,7 @@ static void	set_target_a(t_stack *stack_a, t_stack *stack_b)
 			current_b = current_b->next;
 		}
 		if (best_match_index == LONG_MIN)
-			stack_a->target_node = ft_find_lowest(stack_b);//change
+			stack_a->target_node = ft_find_highest(stack_b);
 		else
 			stack_a->target_node = target_node;
 		stack_a = stack_a->next;
@@ -73,45 +75,10 @@ static void	cost_analysis_a(t_stack *stack_a, t_stack *stack_b)
 			stack_a->push_price = len_a - (stack_a->index);
 		if (stack_a->target_node->above_median)
 			stack_a->push_price += stack_a->target_node->index;
-		else 
+		else
 			stack_a->push_price += len_b - (stack_a->target_node->index);
 		stack_a = stack_a->next;
 	}
-}
-
-void	ft_set_cheapest(t_stack *stack)
-{
-	t_stack *cheapest_node;
-    int min_price = INT_MAX;
-
-    if (!stack)
-        return;
-
-    cheapest_node = NULL;
-    while (stack != NULL)
-    {
-        stack->cheapest = false;  // Reset cheapest
-        if (stack->push_price < min_price)
-        {
-            min_price = stack->push_price;
-            cheapest_node = stack;
-        }
-        stack = stack->next;
-    }
-    if (cheapest_node)
-        cheapest_node->cheapest = true;
-}
-t_stack	*ft_find_cheapest(t_stack *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack)
-	{
-		if (stack->cheapest)
-			return (stack);
-		stack = stack->next;
-	}
-	return (NULL);
 }
 
 void	init_a(t_stack *stack_a, t_stack *stack_b)
