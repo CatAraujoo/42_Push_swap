@@ -31,8 +31,8 @@ void	ft_sorting(t_stack **stack_a, t_stack **stack_b)
 		sort_two(*stack_a);
 	else if (stack_len(*stack_a) == 3)
 		sort_three(stack_a);
-	else if (stack_len(*stack_a) == 5)
-		sort_five(stack_a, stack_b);
+	/*else if (stack_len(*stack_a) == 5)
+		sort_five(stack_a, stack_b);*/
 	else
 		big_sort(stack_a, stack_b);
 }
@@ -78,39 +78,3 @@ void	sort_three(t_stack **stack_a)
 	else if (a < b && b > c && a > c)
 		rra(stack_a);
 }
-
-void	sort_five(t_stack **stack_a, t_stack **stack_b)
-{
-	int	len;
-
-	len = stack_len(*stack_a);
-	min_on_top(stack_a);
-	pb(stack_a, stack_b);
-	if (len == 5)
-	{
-		min_on_top(stack_a);
-		pb(stack_a, stack_b);
-	}
-	sort_three(stack_a);
-	pa(stack_a, stack_b);
-	if (len == 4)
-		pa(stack_a, stack_b);
-}
-/*t_stack	*biggest_node;
-	t_stack *smallest_node;
-	
-	biggest_node = ft_find_highest(*stack_a);
-	smallest_node = ft_find_lowest(*stack_a);
-	while (!A_is_sorted(*stack_a))
-	{
-		if (biggest_node == *stack_a)
-			ra(stack_a, false);
-		else if ((*stack_a)->next == biggest_node)
-		{
-			sa(stack_a);
-			rra(stack_a, false);
-		}
-		if ((*stack_a)->value > (*stack_a)->next->value)
-			sa(stack_a);
-	} 
-}*/
