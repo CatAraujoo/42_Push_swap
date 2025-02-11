@@ -34,7 +34,7 @@ typedef struct s_stack
 }			t_stack;
 
 //handle errors
-int		check_doubles(t_stack *stack_a);
+int		check_doubles(t_stack *stack_a, long nbr);
 int		check_digit(char *stack_a);
 void	ft_free_error(t_stack *stack_a, int ac, char **args);
 void	ft_free_split(char **array);

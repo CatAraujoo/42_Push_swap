@@ -78,11 +78,12 @@ void	stack_init(t_stack **stack_a, char **input, int ac, char **args)
 		nbr = ft_atol(input[i]);
 		if ((nbr > INT_MAX || nbr < INT_MIN))
 			ft_free_error(*stack_a, ac, args);
+		if (check_doubles(*stack_a, nbr) == 1)
+			ft_free_error(*stack_a, ac, args);
 		append_node(stack_a, (int)nbr);
 		i++;
 	}
-	if (check_doubles(*stack_a) == 1)
-		ft_free_error(*stack_a, ac, args);
+	
 }
 
 void	prep_for_push(t_stack **stack, t_stack *target, char stack_name)

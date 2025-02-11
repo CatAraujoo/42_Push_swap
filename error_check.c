@@ -12,19 +12,16 @@
 
 #include "push_swap.h"
 
-int	check_doubles(t_stack *stack_a)
+int	check_doubles(t_stack *stack_a, long nbr)
 {
-	int	temp;
-
 	if (!stack_a)
 		return (0);
-	temp = stack_a->value;
-	while (stack_a->next)
+	while (stack_a)
 	{
-		if (temp == stack_a->next->value)
+		if (stack_a->value == nbr)
 			return (1);
 		stack_a = stack_a->next;
-	}
+	}	
 	return (0);
 }
 

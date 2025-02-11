@@ -31,8 +31,6 @@ void	ft_sorting(t_stack **stack_a, t_stack **stack_b)
 		sort_two(*stack_a);
 	else if (stack_len(*stack_a) == 3)
 		sort_three(stack_a);
-	/*else if (stack_len(*stack_a) == 5)
-		sort_five(stack_a, stack_b);*/
 	else
 		big_sort(stack_a, stack_b);
 }
